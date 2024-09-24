@@ -1,10 +1,12 @@
 import React from 'react';
+import YourCustomComponent from './YourCustomComponent'; // Example import
 
 const Dashboard: React.FC = () => {
   return (
     <div>
-      <h1>Dashboard</h1>
-      {/* Add your dashboard content here */}
+      {/* Your original dashboard content */}
+      <YourCustomComponent />
+      {/* ... more components and content ... */}
     </div>
   );
 };
