@@ -1,0 +1,226 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable */
+
+.layout {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Style for the module wrapper */
+.module-wrapper {
+  transition: all 0.3s ease;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  padding: 0;
+}
+
+/* Grid overlay */
+.react-grid-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.react-grid-layout.is-dragging::before,
+.react-grid-layout.is-resizing::before {
+  opacity: 1;
+}
+
+/* Filled grid boxes with space in between */
+.react-grid-layout::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(to right, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) calc(100% / 12 - 8px), transparent calc(100% / 12 - 8px), transparent calc(100% / 12));
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.react-grid-layout.is-dragging::after,
+.react-grid-layout.is-resizing::after {
+  opacity: 1;
+}
+
+/* Style for the module while dragging */
+.react-grid-item.react-draggable-dragging {
+  z-index: 4;
+  cursor: grabbing;
+}
+
+/* Style for the resize handle */
+.react-resizable-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-image: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.react-resizable-handle::after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 5px;
+  height: 5px;
+  border-right: 2px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.react-resizable-handle:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Override react-grid-layout's default placeholder style */
+.react-grid-item.react-grid-placeholder {
+  background-color: rgba(217, 242, 118, 0.5) !important;
+  border: 2px solid #D9F276;
+  border-radius: 4px !important;
+  transition: all 200ms ease;
+  z-index: 3;
+  box-shadow: 0 0 10px rgba(217, 242, 118, 0.7);
+}
+
+/* Ensure draggable items are above the grid overlay */
+.react-grid-item {
+  z-index: 3;
+  display: flex !important;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: all 200ms ease !important;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Improve visibility of the module content */
+.module-content {
+  background-color: #ffffff;
+  height: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+}
+
+/* Ensure the layout container can grow */
+.react-grid-layout {
+  min-height: 100vh;
+  overflow: visible !important;
+}
+
+/* Fix for vertical resizing */
+.react-grid-item.resizing {
+  z-index: 1;
+  will-change: width, height;
+}
+
+.react-grid-item.dropping {
+  visibility: hidden;
+}
+
+.card-content {
+  flex: 1;
+  overflow: auto;
+  padding: 0;
+}
+
+/* Add this new style */
+.module-inner-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add these new styles */
+.recharts-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.recharts-tooltip-wrapper {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 4px !important;
+}
+
+/* Calendar Heatmap Styles */
+.react-calendar-heatmap .color-empty {
+  fill: #eeeeee;
+}
+.react-calendar-heatmap .color-github-1 {
+  fill: #d6e685;
+}
+.react-calendar-heatmap .color-github-2 {
+  fill: #8cc665;
+}
+.react-calendar-heatmap .color-github-3 {
+  fill: #44a340;
+}
+.react-calendar-heatmap .color-github-4 {
+  fill: #1e6823;
+}
+
+/* Optional: Adjust the size of the calendar squares */
+.react-calendar-heatmap .react-calendar-heatmap-svg rect {
+  stroke: #ffffff;
+  stroke-width: 1px;
+}
+
+/* Normalize browser CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure the body and root div take up full height */
+html, body, #root {
+  height: 100%;
+}
+
+/* Remove default margins from body */
+body {
+  margin: 0;
+}
+
+/* Ensure the dashboard grid takes full available space */
+.dashboard-grid {
+  height: 100%;
+}
+
+/* Adjust card content */
+.card-content {
+  padding: 16px; /* Adjust as necessary */
+}
+
+/* Remove flex: 1 from child elements to prevent stretching */
+.module-content > * {
+  /* Ensure child elements don't stretch unnecessarily */
+  flex: 0 1 auto;
+}

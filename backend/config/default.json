@@ -1,0 +1,7 @@
+{
+  "PORT": 3000,
+  "FIREBASE_SERVICE_ACCOUNT_KEY": "your_firebase_service_account_key",
+  "STRAVA_CLIENT_ID": "your_strava_client_id",
+  "STRAVA_CLIENT_SECRET": "your_strava_client_secret",
+  "STRAVA_REDIRECT_URI": "your_strava_redirect_uri"
+}
